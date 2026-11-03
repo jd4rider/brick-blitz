@@ -1,0 +1,28 @@
+{
+  "name": "brick-blitz",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Brick Blitz — a portrait-first 3D brick-breaking arcade game built with Three.js.",
+  "author": "jd4rider",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "check:levels": "tsx scripts/validate-levels.ts",
+    "check": "npm run test && npm run check:levels && npm run build"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "@types/node": "^24.10.0",
+    "playwright": "^1.64.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "vitest": "^3.2.4"
+  }
+}
