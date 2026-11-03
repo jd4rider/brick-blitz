@@ -390,11 +390,11 @@ export class Renderer {
       emissiveIntensity: 0.18,
     })
     const plateMaterial = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(spec.accent),
-      metalness: 0.2,
-      roughness: 0.25,
+      color: new THREE.Color(spec.color),
+      metalness: 0.15,
+      roughness: 0.3,
       emissive: new THREE.Color(spec.color),
-      emissiveIntensity: 0.55,
+      emissiveIntensity: 1.1,
     })
     // A dark rim behind the tile reads as a bevel and gives the wall depth cues
     // even straight-on, without needing shadow maps on a phone.
@@ -405,7 +405,7 @@ export class Renderer {
     rim.position.z = -0.4
     const body = new THREE.Mesh(new THREE.BoxGeometry(brick.w, brick.h, 4.2), bodyMaterial)
     body.position.z = 0.3
-    const plate = new THREE.Mesh(new THREE.BoxGeometry(brick.w * 0.82, brick.h * 0.72, 0.7), plateMaterial)
+    const plate = new THREE.Mesh(new THREE.BoxGeometry(brick.w * 0.62, brick.h * 0.3, 0.9), plateMaterial)
     plate.position.z = 2.5
     const group = new THREE.Group()
     group.add(rim, body, plate)
@@ -856,9 +856,9 @@ export class Renderer {
           id: -1000 - (row * 7 + col),
           type: 'standard',
           x: (col - 3) * 11,
-          y: 80 - row * 7.4,
+          y: 104 - row * 6.4,
           baseX: (col - 3) * 11,
-          baseY: 80 - row * 7.4,
+          baseY: 104 - row * 6.4,
           w: 9.6,
           h: 6.4,
           hp: 1,
@@ -903,7 +903,7 @@ export class Renderer {
       view = { group, ball: mesh }
       this.balls.set(-1, view)
     }
-    view.group.position.set(Math.sin(orbit) * 26, 66 + Math.cos(orbit * 0.7) * 13, 3)
+    view.group.position.set(Math.sin(orbit) * 26, 95 + Math.cos(orbit * 0.7) * 9, 3)
     if (this.menuTime % 0.05 < dt) {
       this.spawnTrail(view.group.position.x, view.group.position.y, new THREE.Color(this.palette.accent))
     }
