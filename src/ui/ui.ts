@@ -1,4 +1,5 @@
 import type { Game } from '../sim/game'
+import { openTipJar } from './support'
 import type { LevelDefinition, PersistedGame } from '../core/types'
 import { WORLDS, worldById } from '../levels/worlds'
 import { BOSSES } from '../sim/bosses'
@@ -397,7 +398,7 @@ export class UI {
               : ''
           }
         </div>
-        <p class="share-line"><button class="link" data-action="share">Share this score</button></p>
+        <p class="share-line"><button class="link" data-action="share">Share this score</button> · <button class="link" data-action="tip">☕ Buy me a coffee</button></p>
       </div>
     `
     this.root.appendChild(overlay)
@@ -635,6 +636,7 @@ export class UI {
     else if (kind === 'help') this.showHelp()
     else if (kind === 'challenges') this.showChallenges()
     else if (kind === 'share') this.handlers.share()
+    else if (kind === 'tip') openTipJar()
     else if (kind === 'erase') {
       if (window.confirm('Erase all Brick Blitz progress on this device? This cannot be undone.')) {
         this.handlers.eraseProgress()
